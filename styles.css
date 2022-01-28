@@ -71,3 +71,25 @@ p { text-align: center; }
     0% {opacity: 0;}
     100% {opacity: 1;}
 }
+
+
+@media screen and (max-width:768px) {
+    .center-responsive {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #damateba {
+        margin: 0 0 15px 25px;
+    }
+    .container {
+        padding: 0;
+    }
+    #cards {
+        padding: 0;
+    }
+    #d-form {
+        margin-bottom: 40px;
+    }
+}
