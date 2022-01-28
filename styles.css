@@ -1,0 +1,73 @@
+#content {
+	margin: 100px auto 20px auto;
+	width: 400px;
+	height: 266px;
+	position: relative;
+}
+
+#content img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: 10px solid #4C4C4C;
+}
+
+p { text-align: center; }
+
+/********** Link Styles ***********/
+
+#links {
+	width: 420px;
+	display: flex;
+	margin: auto;
+    padding: 10px 0 0 20px;
+}
+
+#links a {
+	display: block;
+	flex: 1;
+	background: #6C0204;
+	height: 50px;
+	line-height: 50px;
+	color: #D5D5D5;
+	text-decoration: none;
+	font-family: Arial;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+#links a:hover {
+	background: #A51D1F;
+	color: #fff;
+}
+
+.vacations-head {
+    margin: 40px 0;
+    border: black solid 3px;
+}
+
+.newform div input, .newform button {
+    width: 60%;
+}
+
+#description {
+    height: 60px;
+}
+.card {
+    width: 350px;
+}
+.card img {
+    width: 300px;
+    height: 200px;
+}
+
+/************ Animation Styles ************/
+
+.fadeinimg {
+    animation: fadein 2s;
+}
+
+@keyframes fadein {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
