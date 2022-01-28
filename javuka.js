@@ -224,7 +224,7 @@ destinationForm.addEventListener("submit", function(e) {
     
     var cardPlace = document.getElementById("cards");
     var createDiv = document.createElement("div");
-    createDiv.className = "col-6 mt-5 d-flex flex-column align-items-center";
+    createDiv.className = "col-md-6 mt-5 d-flex flex-column align-items-center";
     createDiv.innerHTML =
     `
     <h4 class="text-light mb-3">
