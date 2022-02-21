@@ -14,6 +14,14 @@
 
 p { text-align: center; }
 
+.hide-menu {
+    display: none;
+}
+
+.show-menu {
+    display: block;
+}
+
 /********** Link Styles ***********/
 
 #links {

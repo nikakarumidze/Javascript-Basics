@@ -253,3 +253,127 @@ destinationForm.addEventListener("submit", function(e) {
         this[i].value = "";
     }
 })
+
+
+const allUls = document.querySelectorAll(".sub-menu");
+function closeMenu() {
+    for (let i of allUls) {
+        i.className = "hide-menu";
+    }
+}
+closeMenu();
+
+const menuLink = document.querySelectorAll(".menulink");
+for(let x of menuLink) {
+    x.onclick = function(e) {
+        e.preventDefault();
+        if( this.nextElementSibling.className === "hide-menu") {
+            closeMenu();
+            this.nextElementSibling.className = "show-menu";
+        }
+        else {
+            this.nextElementSibling.className = "hide-menu";
+        }
+    }
+}
+
+// Clicked with jQuery
+$("#thisItems li a").click(
+function changePar (e) {
+    e.preventDefault();
+    $(this).parent().addClass("active");
+    $("#thisItems li").not($(this).parent()).removeClass("active");
+
+    var divId = $(this).attr("href");
+    $("#ajax1 div").not(`${divId}`).addClass("d-none");
+    $(`${divId}`).removeClass("d-none");
+}
+)
+
+// jQuery ajax
+$.ajax({
+    url: "first.json", 
+    success: function(result)
+    {
+        $("#tabs-1").html(
+            `
+            <p>${result.paragraph1[0]}</p>
+            <p>${result.paragraph1[1]}</p>
+            `
+            );
+
+        $("#tabs-2").html(
+            `
+            <p>${result.paragraph2[0]}</p>
+            <p>${result.paragraph2[1]}</p>
+            `
+            );
+        
+        $("#tabs-3").html(
+            `
+            <p>${result.paragraph3[0]}</p>
+            <p>${result.paragraph3[1]}</p>
+            `
+            );
+    }
+});
+
+
+// Ajax with JS Vanilla
+
+function loadDoc() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        var obj = JSON.parse(this.response);
+
+        document.querySelector("#tabs1j").innerHTML = 
+        `
+        <p>${obj.paragraph1[0]}</p>
+        <p>${obj.paragraph1[1]}</p>
+        
+        `;
+
+        document.querySelector("#tabs2j").innerHTML = 
+        `
+        <p>${obj.paragraph2[0]}</p>
+        <p>${obj.paragraph2[1]}</p>
+        
+        `;
+
+        document.querySelector("#tabs3j").innerHTML = 
+        `
+        <p>${obj.paragraph3[0]}</p>
+        <p>${obj.paragraph3[1]}</p>
+        
+        `;
+        }
+    xhttp.open("GET", "first.json", true);
+    xhttp.send();
+    }
+
+    loadDoc();
+    
+
+// Click with JS Vanilla
+var allLinks = document.querySelectorAll("#thisItems1 li a");
+
+for (var y of allLinks){
+    y.addEventListener("click", function(e){
+        e.preventDefault();
+        for (y of allLinks){
+            y.parentElement.classList.remove("active");
+        }
+        this.parentElement.classList.add("active");
+        
+        var clicked = this.getAttribute("href");
+
+        var divAjax = document.querySelectorAll(`#ajax2 div:not(${clicked}`);
+        for (let z of divAjax){
+            z.classList.add("d-none");
+        }
+
+        document.querySelector(clicked).classList.remove("d-none");
+        
+        
+    })
+}
