@@ -150,6 +150,8 @@ var nextButton1 = document.getElementById("next1");
 var previousButton1 = document.getElementById("previous1");
 var content = document.getElementById("content");
 
+
+
 function swapSlide (o) {
     var newSlide = document.createElement("img");
     newSlide.src = images[currentImage1];
@@ -177,6 +179,22 @@ previousButton1.addEventListener("click", function (e) {
         currentImage1 = images.length-1;
     }
     swapSlide();
+})
+
+let flowImages = setInterval(Slider, 3000);
+
+function Slider () {
+    currentImage1 ++;
+    if (currentImage1 > images.length-1) {
+        currentImage1 = 0;
+    }
+    swapSlide();
+}
+content.addEventListener("mouseover", function(){
+    clearInterval(flowImages);
+})
+content.addEventListener("mouseout", function(){
+    flowImages = setInterval(Slider, 3000);
 })
 
 // Distance Converter
@@ -377,3 +395,23 @@ for (var y of allLinks){
         
     })
 }
+
+// Recursive Content Rotator
+const rotatorP = document.querySelectorAll("#container-rotator p");
+var currentP = 0;
+
+setInterval(() => {
+
+    for (x of rotatorP){
+        x.classList.add("d-none");
+    }
+
+    currentP ++;
+    if (currentP > rotatorP.length-1) {
+        currentP = 0;
+    }
+    rotatorP[currentP].className = "fadeinimg";
+
+
+}
+,4000)
