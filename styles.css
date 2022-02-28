@@ -69,6 +69,10 @@ p { text-align: center; }
     height: 200px;
 }
 
+.delete, .form-check-input {
+  cursor: pointer;
+}
+
 /************ Animation Styles ************/
 
 .fadeinimg {

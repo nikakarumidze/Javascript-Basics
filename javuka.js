@@ -415,3 +415,49 @@ setInterval(() => {
 
 }
 ,4000)
+
+// Add Todos
+var addBtnText = document.querySelector(".add");
+const toDos = document.querySelector(".todos");
+
+addBtnText.addEventListener("submit", (e) => {
+    e.preventDefault();
+if (addBtnText.add.value.trim()){
+    var createLi = document.createElement("li");
+    createLi.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+    createLi.innerHTML= `
+    <span>${addBtnText.add.value.trim()}</span>
+    <div>
+        <input type="checkbox" class="form-check-input" style="margin-right: 40px;">
+        <i class="far fa-trash-alt delete"></i>
+    </div>
+    `;
+    toDos.appendChild(createLi);
+}
+    addBtnText.reset();
+})
+
+// Delete Todos
+toDos.addEventListener("click", e => {
+    if(e.target.classList.contains("far")){
+        e.target.parentElement.parentElement.remove();
+    }
+})
+
+// Search
+const searchTodos = term => {
+    Array.from(toDos.children)
+    .filter( e => !e.textContent.toLowerCase().includes(term))
+    .forEach( e => e.classList.add("d-none"))
+
+    Array.from(toDos.children)
+    .filter( e => e.textContent.toLowerCase().includes(term))
+    .forEach( e => e.classList.remove("d-none"))
+}
+
+const searchBar = document.querySelector(".search input");
+searchBar.addEventListener("keyup", () => {
+    const term = searchBar.value.trim().toLowerCase();
+    searchTodos(term);
+
+})
